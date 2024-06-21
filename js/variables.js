@@ -32,11 +32,11 @@ var contact_form_recaptcha_error_msg = "Error verifying reCaptcha!";
 
 
 //COUNTDOWN VARIABLES
-var c_days = "DAYS";                            //Countdown "Days" label
-var c_hours = "HOURS";                          //Countdown "Hours" label
-var c_minutes = "MIN.";                         //Countdown "Minutes" label
-var c_seconds = "SEC.";                         //Countdown "Seconds" label
-var countdown_end_msg = "Event Started!";       //Message to display when the countdown reaches the end
+var c_days = "Dias";                            //Countdown "Days" label
+var c_hours = "Horas";                          //Countdown "Hours" label
+var c_minutes = "Min.";                         //Countdown "Minutes" label
+var c_seconds = "Seg.";                         //Countdown "Seconds" label
+var countdown_end_msg = "La boda ha empezado!!";       //Message to display when the countdown reaches the end
 
 
 //GOOGLE MAP VARIABLES

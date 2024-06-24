@@ -6534,4 +6534,17 @@ textarea.form-control {
   }
 }
 
+@media only screen and (max-width: 991px) {
+  .solo-movil {
+      display: block;
+  }
+}
+
+/* Estilo para versiones de escritorio */
+@media only screen and (min-width: 992px) {
+  .solo-movil {
+      display: none;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */

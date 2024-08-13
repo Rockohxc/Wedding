@@ -30,7 +30,6 @@ var contact_form_success_msg = "Información enviada, Muchas gracias! :)";
 var contact_form_error_msg = "Tuvimos problemas al enviar el correo :(";
 var contact_form_recaptcha_error_msg = "Error verificando reCaptcha!";
 
-
 //COUNTDOWN VARIABLES
 var c_days = "Dias";                            //Countdown "Days" label
 var c_hours = "Horas";                          //Countdown "Hours" label

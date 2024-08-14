@@ -6,7 +6,6 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	
 	<!-- Page Title -->
 	<title>Felipe y Rayen - Confirmación</title>	
@@ -49,7 +48,7 @@
 </head>
 <body>
 
-	<!-- BEGIN PRELOADER -->
+	<!-- BEGIN PRELOADER 
 	<div id="preloader">
 		<div class="loading-heart">
 			<svg viewBox="0 0 512 512" width="100">
@@ -62,7 +61,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- END PRELOADER -->
+	END PRELOADER -->
     
 	
 	<!-- BEGIN WRAPPER -->
@@ -147,33 +146,33 @@
 								<div class="form-wrapper no-shadow overflow neela-style">
 									<h2 class="section-title">¿asistirás?</h2>
 									
-									<form id="form-rsvp" method="POST" action="#">
+									<form action="https://formsubmit.co/c97rockohxc@gmail.com" method="POST" >
 										
 										<div class="form-floating">
-											<input type="text" name="Name" id="name" placeholder="Your Name*" class="form-control required fromName">
+											<input type="text" name="Name" placeholder="Your Name*" class="form-control required fromName" required>
 											<label for="name">Tu nombre*</label>
 										</div>
 										
 										<div class="form-floating">
-											<input type="email" name="E-mail" id="email" placeholder="E-mail*" class="form-control required fromEmail">
+											<input type="email" name="E-mail" placeholder="E-mail*" class="form-control required fromEmail" required>
 											<label for="email">Tu correo*</label>
 										</div>
 										
 										<div class="form-check-wrapper">
 											<div class="form-check form-check-inline">
-												<input class="form-check-input required" type="radio" name="Attend wedding" id="attend_wedding_yes">
+												<input class="form-check-input required" type="radio" name="Attend wedding" required>
 												<label for="attend_wedding_yes">Si, Asistiré!.</label>
 											</div>
 											
 											<div class="form-check form-check-inline">
-												<input class="form-check-input required" type="radio" name="Attend wedding" id="attend_wedding_no">
+												<input class="form-check-input required" type="radio" name="Attend wedding" required>
 												<label for="attend_wedding_no">Lo siento, no podré asistir.</label>
 											</div>
 										</div>
 										
 										
 										<div class="form-floating">
-											<textarea id="message" name="Message" placeholder="Message" class="form-control" rows="4"></textarea>
+											<textarea name="Message" placeholder="Message" class="form-control" rows="4" required></textarea>
 											<label for="message">Mensaje</label>
 										</div>
 										
@@ -190,6 +189,8 @@
 					</div>
 				</section>
 				<!-- END CONTACT FORM SECTION -->
+
+			
 				
 			
 				<!-- BEGIN WEDDING LOCATION SECTION -->

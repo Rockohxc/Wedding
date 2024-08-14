@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /*
 The variables below can be overridden by setting the contact 
@@ -10,10 +10,18 @@ of them has different emailTo, subject, etc.
 If none of the fields were set as emailTo, fromName, fromEmail
 or subject, the default values (below) will be used.
 */
-$emailto = 'rockohxc@gmail.com'; 	// Insert the email address that will receive the messages
-$fromName = 'contrerasrubiorodrigo@gmail.com';					// Insert a default "From Name" (this field will be displayed in the email header)
-$fromEmail = 'contrerasrubiorodrigo@gmail.com';	// Insert a default "From Email" address (this field will be displayed in the email header)
-$subject = 'Respuesta de invitación';		// Insert a default contact form subject
+
+
+
+
+
+
+
+/*
+$emailto = 'rockohxc@gmail.com';    // Insert the email address that will receive the messages
+$fromName = 'contrerasrubiorodrigo@gmail.com';                  // Insert a default "From Name" (this field will be displayed in the email header)
+$fromEmail = 'contrerasrubiorodrigo@gmail.com'; // Insert a default "From Email" address (this field will be displayed in the email header)
+$subject = 'Respuesta de invitación';       // Insert a default contact form subject
 
 
 // Insert your Google reCaptcha V2 secret key
@@ -27,80 +35,80 @@ $recaptcha = false;
 $charset = "UTF-8";
 
 if (isset($_POST['recaptcha'])) {
-	$captcha = sanitize_xss($_POST['recaptcha']);
-	$url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secretkey . '&response=' . urlencode($captcha) . '&remoteip=' . $_SERVER["REMOTE_ADDR"];
-	$response = file_get_contents($url);
-	$responseArray = json_decode($response,true);
-	
-	if ($responseArray["success"]) {
-		$recaptcha = true;
-	}
+    $captcha = sanitize_xss($_POST['recaptcha']);
+    $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secretkey . '&response=' . urlencode($captcha) . '&remoteip=' . $_SERVER["REMOTE_ADDR"];
+    $response = file_get_contents($url);
+    $responseArray = json_decode($response,true);
+    
+    if ($responseArray["success"]) {
+        $recaptcha = true;
+    }
 } else {
-	$recaptcha = true;
+    $recaptcha = true;
 }
 
 function sanitize_xss($value) {
-	$charset = "UTF-8";
-	return htmlentities(strip_tags($value), ENT_QUOTES, $charset);
+    $charset = "UTF-8";
+    return htmlentities(strip_tags($value), ENT_QUOTES, $charset);
 }
 
 if(isset($_POST['emailto'])) {
-	$emailto = sanitize_xss($_POST['emailto']);
+    $emailto = sanitize_xss($_POST['emailto']);
 }
 
 if(isset($_POST['fromname'])) {
-	$fromName = sanitize_xss($_POST['fromname']);
+    $fromName = sanitize_xss($_POST['fromname']);
 }
 
 if(isset($_POST['fromemail'])) {
-	$fromEmail = sanitize_xss($_POST['fromemail']);
+    $fromEmail = sanitize_xss($_POST['fromemail']);
 }
 
 if(isset($_POST['subject'])) {
-	$subject = sanitize_xss($_POST['subject']);
+    $subject = sanitize_xss($_POST['subject']);
 }
 
 $html = "";
 $len = intval(sanitize_xss($_POST['len']));
 
 if ($len && $recaptcha){
-	if (isset($_POST['fromname_label'])){
-		$html .= sanitize_xss($_POST['fromname_label']) . ": ";
-		$html .= $fromName . "<br>\n";
-	}
+    if (isset($_POST['fromname_label'])){
+        $html .= sanitize_xss($_POST['fromname_label']) . ": ";
+        $html .= $fromName . "<br>\n";
+    }
 
-	if (isset($_POST['fromemail_label'])){
-		$html .= sanitize_xss($_POST['fromemail_label']) . ": ";
-		$html .= $fromEmail . "<br>\n";
-	}
+    if (isset($_POST['fromemail_label'])){
+        $html .= sanitize_xss($_POST['fromemail_label']) . ": ";
+        $html .= $fromEmail . "<br>\n";
+    }
 
-	if (isset($_POST['subject_label'])){
-		$html .= sanitize_xss($_POST['subject_label']) . ": ";
-		$html .= $subject . "<br>\n";
-	}
+    if (isset($_POST['subject_label'])){
+        $html .= sanitize_xss($_POST['subject_label']) . ": ";
+        $html .= $subject . "<br>\n";
+    }
 
-	for($i=0; $i<$len; $i++){
-		if (isset($_POST['field'. $i .'_label'])){
-			$html .= sanitize_xss($_POST['field'. $i .'_label']) . ": ";
-			$html .= sanitize_xss($_POST['field'. $i .'_value']) . "<br>\n";
-		}
-	}
+    for($i=0; $i<$len; $i++){
+        if (isset($_POST['field'. $i .'_label'])){
+            $html .= sanitize_xss($_POST['field'. $i .'_label']) . ": ";
+            $html .= sanitize_xss($_POST['field'. $i .'_value']) . "<br>\n";
+        }
+    }
 
-	$headers = "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\n";
-	if ($fromName != "" || $fromEmail != ""){
-		$headers .= "From: " . html_entity_decode($fromName, ENT_QUOTES, $charset) . "<". $fromEmail .">\r\n";
-	}
-	$headers .= "Reply-To: " .  $fromEmail . "\r\n";
+    $headers = "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\n";
+    if ($fromName != "" || $fromEmail != ""){
+        $headers .= "From: " . html_entity_decode($fromName, ENT_QUOTES, $charset) . "<". $fromEmail .">\r\n";
+    }
+    $headers .= "Reply-To: " .  $fromEmail . "\r\n";
 
-	$html = mb_convert_encoding($html, 'ISO-8859-1', 'UTF-8');
+    $html = mb_convert_encoding($html, 'ISO-8859-1', 'UTF-8');
 
-	if ($html && mail($emailto, $subject, $html, $headers)) {
-		echo 'ok';
-	} else {
-		echo 'error';
-	}
+    if ($html && mail($emailto, $subject, $html, $headers)) {
+        echo 'ok';
+    } else {
+        echo 'error';
+    }
 } else {
-	echo 'error';
+    echo 'error';
 }
 
-?>
+?> 
